@@ -34,7 +34,7 @@
         {# navbar #}
         <header>
             <nav class="navbar fixed-bottom justify-content-around">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ path('product') }}">
                     E-shop
                 </a>
                 <a class="navbar-brand" href="#">
@@ -59,7 +59,7 @@
                         <ul class="list-group list-group-flush d-flex flex-column align-items-center">
                             <li class="list-group-item"><a href="{{ path('home') }}">Accueil</a></li>
                             <li class="list-group-item"><a href="#">Articles</a></li>
-                            <li class="list-group-item"><a href="#">E-shop</a></li>
+                            <li class="list-group-item"><a href="{{ path('product') }}">E-shop</a></li>
                             <li class="list-group-item"><a href="#">Mon compte</a></li>
                             <li class="list-group-item"><a href="#">Mon panier</a></li>
                             <li class="list-group-item"><a href="#">Aide/FAQ</a></li>

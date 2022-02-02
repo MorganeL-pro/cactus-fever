@@ -7,6 +7,15 @@
     box-shadow: 0 4px 4px lighten($dark-text, 30%);
     border: 3px solid $green;
     border-radius: 10px;
+    text-decoration: none;
+    color: $black;
+    
+
+    &:hover, &:focus {
+        box-shadow: 0 4px 4px lighten($dark-text, 10%);
+        color: $black;
+        border: 3px solid darken($green, 10%);
+    }
 
     h2 {
         font-size: 2rem;
