@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block body %}
+<div class="d-flex flex-column align-items-center">
+    <h1>Formulaire d'inscription</h1>
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.firstname, {
+            label: 'Prénom'
+        }) }}
+        {{ form_row(registrationForm.lastname, {
+            label: 'Nom de famille'
+        }) }}
+        {{ form_row(registrationForm.phone, {
+            label: 'Téléphone'
+        }) }}
+        {{ form_row(registrationForm.streetAddress, {
+            label: 'Numéro de rue + rue'
+        }) }}
+        {{ form_row(registrationForm.postalCode, {
+            label: 'Code postal'
+        }) }}
+        {{ form_row(registrationForm.city, {
+            label: 'Ville'
+        }) }}
+        {{ form_row(registrationForm.email, {
+            label: 'Adresse email'
+        }) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe'
+        }) }}
+
+        <button type="submit" class="btn btn-success">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+</div>
+{% endblock %}

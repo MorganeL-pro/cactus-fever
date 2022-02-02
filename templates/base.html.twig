@@ -29,7 +29,6 @@
                 </div>
             {% endfor %}
         {% endfor %}
-        {% include 'components/_info.html.twig' %}
         {% block body %}{% endblock %}
         {# navbar #}
         <header>
@@ -46,7 +45,7 @@
                 <a class="navbar-brand" href="#">
                     <img src="{{ asset('build/images/cart.png') }}" alt="cart">
                 </a>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ path('login') }}">
                     <img src="{{ asset('build/images/account.png') }}" alt="login">
                 </a>
                 <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">menu</button>
@@ -60,7 +59,7 @@
                             <li class="list-group-item"><a href="{{ path('home') }}">Accueil</a></li>
                             <li class="list-group-item"><a href="#">Articles</a></li>
                             <li class="list-group-item"><a href="{{ path('product') }}">E-shop</a></li>
-                            <li class="list-group-item"><a href="#">Mon compte</a></li>
+                            <li class="list-group-item"><a href="{{ path('login') }}">Mon compte</a></li>
                             <li class="list-group-item"><a href="#">Mon panier</a></li>
                             <li class="list-group-item"><a href="#">Aide/FAQ</a></li>
                             <li class="list-group-item"><a href="#">Mentions légales</a></li>
