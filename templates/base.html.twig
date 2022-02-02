@@ -13,11 +13,25 @@
         {% endblock %}
     </head>
     <body>
-        <section class="logo-title d-flex justify-content-around align-items-center">
-            <img src="{{ asset('build/images/cactus-logo.png') }}" alt="cactus-logo">
+        {# banner #}
+        <section class="logo-title d-flex justify-content-center align-items-center gap-4">
+            <a href="{{ path('home') }}">
+                <img src="{{ asset('build/images/cactus-logo.png') }}" alt="cactus-logo">
+            </a>
             <h1>Cactus Fever</h1>
         </section>
+        {# flash messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% include 'components/_info.html.twig' %}
         {% block body %}{% endblock %}
+        {# navbar #}
         <header>
             <nav class="navbar fixed-bottom justify-content-around">
                 <a class="navbar-brand" href="#">
@@ -42,12 +56,17 @@
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                            <li class="list-group-item">A fourth item</li>
-                            <li class="list-group-item">And a fifth one</li>
+                        <ul class="list-group list-group-flush d-flex flex-column align-items-center">
+                            <li class="list-group-item"><a href="{{ path('home') }}">Accueil</a></li>
+                            <li class="list-group-item"><a href="#">Articles</a></li>
+                            <li class="list-group-item"><a href="#">E-shop</a></li>
+                            <li class="list-group-item"><a href="#">Mon compte</a></li>
+                            <li class="list-group-item"><a href="#">Mon panier</a></li>
+                            <li class="list-group-item"><a href="#">Aide/FAQ</a></li>
+                            <li class="list-group-item"><a href="#">Mentions légales</a></li>
+                            <li class="list-group-item"><a href="#">CGU</a></li>
+                            <li class="list-group-item"><a href="#">RGPD</a></li>
+                            <li class="list-group-item"><a href="#">Nous contacter</a></li>
                           </ul>
                     </div>
                 </div>
