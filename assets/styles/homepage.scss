@@ -1,36 +1,26 @@
 .e-shop-home, .articles-home {
     width: 80%;
     height: 280px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: 0 4px 4px lighten($dark-text, 30%);
+    border: 3px solid $green;
+    border-radius: 10px;
+
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
 }
 
 .e-shop-home {
     background-image: url('../images/415662.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    box-shadow: 0 3px 3px $dark-text;
-    border: 3px solid $green;
-    border-radius: 10px;
-
-    h2 {
-        font-size: 2rem;
-        font-weight: bold;
-    }
+    
 }
 
 .articles-home {
     background-image: url('../images/415713.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    box-shadow: 0 3px 3px $dark-text;
-    border: 3px solid $green;
-    border-radius: 10px;
-
-    h2 {
-        font-size: 2rem;
-        font-weight: bold;
-    }
 }
 
 @media screen and (min-width: 640px) {
