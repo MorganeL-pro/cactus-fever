@@ -31,4 +31,15 @@ class ProductController extends AbstractController
             'categories' => $categories
         ]);
     }
+
+    /**
+     * @Route("/product/{id}", requirements={"id"="\d+"}, methods={"GET"}, name="product_show")
+     */
+    public function show(int $id): Response
+    {
+        $product = $this->productRepository->find($id);
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
+        ]);
+    }
 }
