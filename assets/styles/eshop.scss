@@ -1,0 +1,34 @@
+.e-shop-title {
+
+    img {
+        width: 50px;
+        vertical-align: middle;
+    }
+}
+
+.list-categories-items {
+    border: none;
+
+    &:hover, &:focus {
+        background-color: $green;
+    }
+}
+
+.product-card {
+    
+
+    .product-img {
+        max-height: 250px;
+    }
+}
+
+.cart-btn {
+    
+    font-weight: bold;
+    border: none;
+
+    &:hover, &:focus {
+        background-color: $green!important;
+        color: $dark-text;
+    }
+}
