@@ -1,0 +1,67 @@
+.e-shop-home, .articles-home {
+    width: 80%;
+    height: 280px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: 0 4px 4px lighten($dark-text, 30%);
+    border: 3px solid $green;
+    border-radius: 10px;
+    text-decoration: none;
+    color: $black;
+    
+
+    &:hover, &:focus {
+        box-shadow: 0 4px 4px lighten($dark-text, 10%);
+        color: $black;
+        border: 3px solid darken($green, 10%);
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+.e-shop-home {
+    background-image: url('../images/415662.jpg');
+    
+}
+
+.articles-home {
+    background-image: url('../images/415713.jpg');
+}
+
+@media screen and (min-width: 640px) {
+    .main-home {
+        margin-top: 2rem;
+    }
+    .e-shop-home, .articles-home {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .main-home {
+        margin-top: 4rem;
+        flex-direction: row!important;
+        justify-content : space-around!important;
+        gap: 4rem!important;
+    }
+
+    .e-shop-home, .articles-home {
+        width: 40%;
+        height: 350px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .main-home {
+        gap: 2rem!important;
+    }
+
+    .e-shop-home, .articles-home {
+        width: 30%;
+        height: 400px;
+    }
+}
