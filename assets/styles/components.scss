@@ -4,6 +4,7 @@
     background-color: $yellow-navbar;
     border-radius: 30px;
     padding: 1rem;
+    box-shadow: 0 3px 4px lighten($dark-text, 30%);
 
     h2 {
         font-weight: bold;
