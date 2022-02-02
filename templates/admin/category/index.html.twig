@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+<main>
+    <h1>Liste des catégories</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{{ path('category_show', {'id': category.id}) }}">afficher</a>
+                    <a href="{{ path('category_edit', {'id': category.id}) }}">éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">aucune catégorie pour l'instant</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('category_new') }}">Créer une nouvelle catégorie</a>
+    <a href="{{ path('admin') }}" title="retour au panneau administrateur">Retour au panneau administrateur</a>
+</main>
+{% endblock %}

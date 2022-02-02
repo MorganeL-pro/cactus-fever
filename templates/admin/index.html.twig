@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panneau administrateur{% endblock %}
+
+{% block body %}
+<main class="panel-admin d-flex flex-column align-items-center m-5 gap-5">
+    <h1>Gestion du catalogue</h1>
+    <section class="d-flex flex-column align-items-center m-5 gap-5">
+        <a href="{{ path("category_index") }}" title="voir les catégories">Catégories</a>
+        <a href="{{ path("product_index") }}" title="voir les produits">Produits</a>
+        <a href="#" title="voir les commandes">Commandes</a>
+        <a href="#" title="voir les articles">Articles</a>
+    </section>
+</main>
+{% endblock %}
