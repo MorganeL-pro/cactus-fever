@@ -1,0 +1,37 @@
+// @font-face {
+//     font-family: 'Rubik Beastly', cursive;
+//     font-weight: normal;
+//     src: url('/assets/fonts/RubikBeastly-Regular.ttf');
+// }
+
+// @font-face {
+//     font-family: 'Nunito', sans-serif;
+//     font-weight:lighter;
+//     src: url('/assets/fonts/Nunito-Light.ttf');
+// }
+
+// @font-face {
+//     font-family: 'Nunito', sans-serif;
+//     font-weight: bold;
+//     src: url('/assets/fonts/Nunito-Bold.ttf');
+// }
+
+// @font-face {
+//     font-family: 'Nunito', sans-serif;
+//     font-weight: normal;
+//     src: url('/assets/fonts/Nunito-Regular.ttf');
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Rubik+Beastly&display=swap');
+
+
+$font-title: 'Rubik Beastly';
+$font-text: 'Nunito';
+
+//colors
+
+$dark-text: #606060;
+$yellow-navbar: #fef8cc;
+$green: #ddf8dd;
+$white: white;
+$black: rgb(32, 31, 31);
