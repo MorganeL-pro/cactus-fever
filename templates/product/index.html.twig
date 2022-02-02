@@ -20,7 +20,7 @@
     {% for product in products %}
     <div class="product-card card" style="width: 18rem;">
         <a href="{{ path("product_show", {id: product.id}) }}" title="voir le produit en détail">
-        <img class="product-img card-img-top" src="build/images/{{ product.picture }}" alt="Card image cap">
+            <img class="product-img card-img-top" src="build/images/{{ product.picture }}" alt="Card image cap">
         </a>
         <div class="card-body d-flex flex-column align-items-center">
           <h5 class="card-title text-center fw-bold">{{ product.name }}</h5>

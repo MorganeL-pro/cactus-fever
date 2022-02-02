@@ -38,6 +38,7 @@ class ProductController extends AbstractController
     public function show(int $id): Response
     {
         $product = $this->productRepository->find($id);
+        dd($product);
         return $this->render('product/show.html.twig', [
             'product' => $product,
         ]);
