@@ -1,15 +1,38 @@
+body, .navbar {
+    min-width: 338px;
+    font-family: $font-text;
+}
+
 .logo-title {
 
-    padding: 2rem;
+    padding: 1rem;
+    background-color: $green;
+    color: $dark-text;
 
     img {
 
-        width: 100px;
+        width: 70px;
     }
 
     h1 {
 
         font-family: $font-title;
-        font-size: 5rem;
+        font-size: 2rem;
+    }
+}
+
+.navbar  {
+    background-color: $yellow-navbar;
+
+    a {
+
+        color: $black;
+        font-size: 1rem;
+
+        img {
+
+            width: 35px;
+            height: 35px;
+        }
     }
 }

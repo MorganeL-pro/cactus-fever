@@ -1,0 +1,36 @@
+.e-shop-home, .articles-home {
+    width: 80%;
+    height: 300px;
+}
+
+.e-shop-home {
+    margin-top: 2rem;
+    background-image: url('../images/415662.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 3px 3px $dark-text;
+    border: 3px solid $green;
+    border-radius: 10px;
+
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+.articles-home {
+    margin-top: 2rem;
+    background-image: url('../images/415713.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 3px 3px $dark-text;
+    border: 3px solid $green;
+    border-radius: 10px;
+
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}

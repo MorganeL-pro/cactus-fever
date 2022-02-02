@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>Cactus Fever | {% block title %} {% endblock %}</title>
@@ -18,5 +18,40 @@
             <h1>Cactus Fever</h1>
         </section>
         {% block body %}{% endblock %}
+        <header>
+            <nav class="navbar fixed-bottom justify-content-around">
+                <a class="navbar-brand" href="#">
+                    E-shop
+                </a>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('build/images/news.png') }}" alt="news">
+                </a>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('build/images/search.png') }}" alt="search">
+                </a>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('build/images/cart.png') }}" alt="cart">
+                </a>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('build/images/account.png') }}" alt="login">
+                </a>
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">menu</button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item">A fourth item</li>
+                            <li class="list-group-item">And a fifth one</li>
+                          </ul>
+                    </div>
+                </div>
+              </nav>
+        </header>
     </body>
 </html>
