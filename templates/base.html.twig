@@ -29,12 +29,11 @@
                 </div>
             {% endfor %}
         {% endfor %}
-        {% include 'components/_info.html.twig' %}
         {% block body %}{% endblock %}
         {# navbar #}
         <header>
             <nav class="navbar fixed-bottom justify-content-around">
-                <a class="navbar-brand" href="{{ path('product') }}">
+                <a class="navbar-brand" href="{{ path('product') }}" title="accès à l'eshop">
                     E-shop
                 </a>
                 <a class="navbar-brand" href="#">
@@ -46,9 +45,15 @@
                 <a class="navbar-brand" href="#">
                     <img src="{{ asset('build/images/cart.png') }}" alt="cart">
                 </a>
-                <a class="navbar-brand" href="#">
-                    <img src="{{ asset('build/images/account.png') }}" alt="login">
-                </a>
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}" title="se déconnecter">
+                        <img src="{{ asset('build/images/deconnexion.png') }}" alt="deconnexion">
+                    </a>
+                {% else %}
+                    <a class="navbar-brand" href="{{ path('profile') }}" title="accès au profil">
+                        <img src="{{ asset('build/images/account.png') }}" alt="profile">
+                    </a>
+                {% endif %}
                 <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">menu</button>
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -60,7 +65,7 @@
                             <li class="list-group-item"><a href="{{ path('home') }}">Accueil</a></li>
                             <li class="list-group-item"><a href="#">Articles</a></li>
                             <li class="list-group-item"><a href="{{ path('product') }}">E-shop</a></li>
-                            <li class="list-group-item"><a href="#">Mon compte</a></li>
+                            <li class="list-group-item"><a href="{{ path('profile') }}">Mon compte</a></li>
                             <li class="list-group-item"><a href="#">Mon panier</a></li>
                             <li class="list-group-item"><a href="#">Aide/FAQ</a></li>
                             <li class="list-group-item"><a href="#">Mentions légales</a></li>

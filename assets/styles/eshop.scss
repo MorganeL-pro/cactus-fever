@@ -35,3 +35,14 @@
         color: $dark-text;
     }
 }
+
+.product-img-show {
+    max-width: 400px;
+}
+
+
+@media screen and (min-width: 1024px) {
+    .card-row {
+        flex-direction: row!important;
+    }
+}
