@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des commandes{% endblock %}
+
+{% block body %}
+<main class="panel-admin d-flex flex-column align-items-center m-5 gap-5">
+    <a href="{{ path('admin') }}" title="retour au panneau administrateur" class="btn btn-success align-self-start">Retour au panneau administrateur</a>
+    {% if purchases|length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Numéro de commande</th>
+                    <th>Date de commande</th>
+                    <th>Nom de l'acheteur</th>
+                    <th>Montant total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                <tr>
+                    <td>{{ purchase.id }}</td>
+                    <td>{{ purchase.createdAt|date("m/d/Y") }}</td>
+                    <td>{{ purchase.fullname }}</td>
+                    <td>{{ purchase.total / 100 }} €</td>
+                    <td>{{ purchase.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aucune commande à afficher</p>
+    {% endif %}
+</main>
+{% endblock %}

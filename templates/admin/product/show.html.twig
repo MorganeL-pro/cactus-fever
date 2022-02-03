@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produit{% endblock %}
+{% block title %}{{ product.name }}{% endblock %}
 
 {% block body %}
 <main class="d-flex flex-column align-items-center m-5">
     <a href="{{ path('product_index') }}" class="btn btn-success align-self-start" title="Retour à la liste">Retour à la liste</a>
-    <h1 class="m-3">Produit</h1>
+    <h1 class="m-3">{{ product.name }}</h1>
 
     <table class="table d-flex flex-column align-items-center">
         <tbody >

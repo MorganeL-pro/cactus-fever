@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Catégorie{% endblock %}
+{% block title %}Catégorie - {{ category.name }}{% endblock %}
 
 {% block body %}
 <main class="d-flex flex-column align-items-center m-4">
     <a href="{{ path('category_index') }}" class="btn btn-success align-self-start" title="Retour à la liste">Retour à la liste</a>
-    <h1 class="m-3">Catégorie</h1>
+    <h1 class="m-3">Catégorie - {{ category.name }}</h1>
 
     <table class="table">
         <tbody>
