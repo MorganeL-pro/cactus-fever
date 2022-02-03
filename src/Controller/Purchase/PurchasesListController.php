@@ -10,13 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PurchasesListController extends AbstractController
 {
-    public function __construct()
-    {
-    }
-
     /**
      * @Route("/purchases/{id}", name="purchase_index", requirements={"id"="\d+"}, methods={"GET"})
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_USER", message="Vous devez être connecté pour accéder à vos commandes.")
      */
     public function index(User $user): Response
     {

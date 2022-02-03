@@ -2,6 +2,5 @@ grumphp:
     tasks:
         phpcs:
             standard: ~
-        phpstan:
         twigcs:
             path: 'templates'

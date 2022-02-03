@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\PurchaseRepository;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,9 +20,8 @@ class ProfileController extends AbstractController
      */
     public function index(PurchaseRepository $purchaseRepository): Response
     {
-        if ($this->getUser() instanceof User) {
-            $lastPurchase = $purchaseRepository->findOneBy(['user' => $this->getUser(), 'id' => 'DESC' ]);
-        }
+
+        $lastPurchase = $purchaseRepository->findOneBy(['user' => $this->getUser()], ['id' => 'DESC' ]);
 
         // if user is an admin, redirect to the dashboard
         if ($this->getUser() instanceof User) {
