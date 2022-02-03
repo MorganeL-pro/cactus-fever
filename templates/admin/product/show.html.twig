@@ -4,7 +4,8 @@
 
 {% block body %}
 <main class="d-flex flex-column align-items-center m-4">
-    <h1>Produit</h1>
+    <a href="{{ path('product_index') }}" class="btn btn-success align-self-start" title="Retour à la liste">Retour à la liste</a>
+    <h1 class="m-3">Produit</h1>
 
     <table class="table d-flex flex-column align-items-center">
         <tbody >
@@ -43,9 +44,8 @@
         </tbody>
     </table>
     <div class="d-flex gap-3">
-    <a href="{{ path('product_index') }}" class="btn btn-success" title="Retour à la liste">Retour à la liste</a>
-    <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-info" title="Editer">Editer</a>
-    {{ include('admin/product/_delete_form.html.twig') }}
+        <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-info" title="Editer">Éditer</a>
+        {{ include('admin/product/_delete_form.html.twig') }}
     </div>
 </main>
 {% endblock %}

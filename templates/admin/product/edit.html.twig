@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Editer le produit{% endblock %}
+{% block title %}Éditer le produit{% endblock %}
 
 {% block body %}
-    <h1>Editer le produit</h1>
-
-    {{ include('admin/product/_form.html.twig', {'button_label': 'Enregistrer'}) }}
-
-    <a href="{{ path('product_index') }}">Retour à la liste</a>
-
-    {{ include('admin/product/_delete_form.html.twig') }}
+<main class="d-flex flex-column align-items-center m-4">
+    <a href="{{ path('product_index') }}" class="btn btn-success align-self-start">Retour à la liste</a>
+    <h1 class="m-3">Éditer le produit</h1>
+    <div class="d-flex flex-wrap align-items-end gap-3">
+        {{ include('admin/product/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+        {{ include('admin/product/_delete_form.html.twig') }}
+    </div>
+</main>
 {% endblock %}

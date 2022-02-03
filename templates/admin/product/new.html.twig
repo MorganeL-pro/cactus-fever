@@ -3,9 +3,9 @@
 {% block title %}Créer un nouveau produit{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouveau produit</h1>
-
+<main class="d-flex flex-column align-items-center m-4">
+    <a href="{{ path('product_index') }}" class="btn btn-success align-self-start">Retour à la liste</a>
+    <h1 class="m-3">Créer un nouveau produit</h1>
     {{ include('admin/product/_form.html.twig') }}
-
-    <a href="{{ path('product_index') }}">Retour à la liste</a>
+</main>
 {% endblock %}

@@ -1,11 +1,18 @@
+body {
+    background-image: url('../images/background-cactus.jpg');
+    // background-size: cover;
+    background-repeat: repeat;
+}
+
 .e-shop-home, .articles-home {
     width: 80%;
     height: 280px;
+    background-color: $white;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     box-shadow: 0 4px 4px lighten($dark-text, 30%);
-    border: 3px solid $green;
+    // border: 3px solid $green;
     border-radius: 10px;
     text-decoration: none;
     color: $black;
