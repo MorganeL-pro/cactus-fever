@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block body %}
+<main class="d-flex flex-column align-items-center m-5">
+    <a href="{{ path('admin') }}" title="retour au panneau administrateur" class="btn btn-success align-self-start">Retour au panneau administrateur</a>
+    <h1 class="m-3">Liste des articles</h1>
+
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Créé le</th>
+                <th>Modifié le</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.text }}</td>
+                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{% if article.picture is not null %}<img class="product-img-show" src="/../build/images/{{ article.picture }}" alt="Card image cap" style="height: 200px">{% endif %}</td>
+                <td>
+                    <a href="{{ path('article_show', {'id': article.id}) }}" class="btn btn-primary m-1">Afficher</a>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}"class="btn btn-info m-1">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas d'article enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('article_new') }}" class="btn btn-info">Créer un nouvel article</a>
+</main>
+{% endblock %}

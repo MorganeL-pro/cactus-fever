@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+{% include 'components/_info.html.twig' %}
+    <main class="d-flex flex-column align-items-center p-5 gap-5">
+        <a href="{{ path("articles_index") }}" class="btn btn-info align-self-start">Retour à la liste des articles</a>
+        <div class="product-card card-row d-flex flex-column align-items-center">
+            {% if article.picture is not null %}
+                <img class="product-img-show" src="../build/images/{{ article.picture }}" alt="Card image cap">
+            {% endif %}
+            <div class="card-body d-flex flex-column align-items-center">
+            <h1 class="card-title text-center fw-bold">{{ article.title }}</h1>
+            {% if article.updatedAt is not null %}<p> - {{ article.updatedAt|date("m/d/Y") }} - </p>{% else %}<p> - {{ article.createdAt|date("m/d/Y") }} - </p>{% endif %}
+            <p>{{ article.text }}</p>
+            </div>
+        </div>
+        <p class="fw-bold">En lien avec ce article</p>
+    </main>
+{% endblock %}

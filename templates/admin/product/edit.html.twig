@@ -3,12 +3,12 @@
 {% block title %}Éditer le produit{% endblock %}
 
 {% block body %}
-<main class="d-flex flex-column align-items-center m-5">
-    <a href="{{ path('product_index') }}" class="btn btn-success align-self-start">Retour à la liste</a>
-    <h1 class="m-3">Éditer le produit</h1>
-    <div class="d-flex flex-wrap align-items-end gap-3">
-        {{ include('admin/product/_form.html.twig', {'button_label': 'Enregistrer'}) }}
-        {{ include('admin/product/_delete_form.html.twig') }}
-    </div>
-</main>
+    <main class="d-flex flex-column align-items-center m-5">
+        <a href="{{ path('product_index') }}" class="btn btn-success align-self-start">Retour à la liste</a>
+        <h1 class="m-3">Éditer le produit</h1>
+        <div class="d-flex flex-wrap align-items-end gap-3">
+            {{ include('admin/product/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+            {{ include('admin/product/_delete_form.html.twig') }}
+        </div>
+    </main>
 {% endblock %}

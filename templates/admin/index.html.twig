@@ -9,8 +9,8 @@
     <section class="d-flex flex-column align-items-center m-5 gap-5">
         <a href="{{ path("category_index") }}" title="voir les catégories">Catégories</a>
         <a href="{{ path("product_index") }}" title="voir les produits">Produits</a>
-        <a href="#" title="voir les commandes">Commandes</a>
-        <a href="#" title="voir les articles">Articles</a>
+        <a href="{{ path("admin_purchases") }}" title="voir les commandes">Commandes</a>
+        <a href="{{ path("article_index") }}" title="voir les articles">Articles</a>
     </section>
 </main>
 {% endblock %}
