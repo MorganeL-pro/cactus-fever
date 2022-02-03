@@ -3,23 +3,50 @@
 {% block title %}Mes commandes{% endblock %}
 
 {% block body %}
-<main>
-    <h1>Mes commandes</h1>
+<main class="d-flex flex-column align-items-center m-5 gap-3">
+    <a href="{{ path("profile") }}" class="btn btn-success align-self-start">Retour au profil</a>
+    <div class="connexion-title d-flex gap-3">
+        <img src="{{ asset('build/images/cactus-registration.png') }}" alt="cactus-registration">
+        <h1 class="fw-bold h2">Mes commandes</h1>
+    </div>
     {% if purchases|length > 0 %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Numéro</th>
-                    <th>Adresse</th>
-                    <th>Date de commande</th>
-                    <th>Produits</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for purchase in purchases %}
+        {% for purchase in purchases %}
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-heading{{ purchase.id }}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ purchase.id }}" aria-expanded="true" aria-controls="flush-collapse{{ purchase.id }}">
+                            Commande n°{{ purchase.id }} - {{ purchase.createdAt|date("m/d/Y") }} - {{ purchase.status }}
+                        </button>
+                    </h2>
+                    <div id="flush-collapse{{ purchase.id }}" class="accordion-collapse collapse show" aria-labelledby="flush-heading{{ purchase.id }}">
+                        <div class="accordion-body">
+                            <p class="text-center">{{ purchase.fullname }}</p>
+                            <p class="text-center fw-bold">Adresse de livraison</p>
+                            <p class="text-center">{{ purchase.streetAddress }} {{ purchase.postalCode }} {{ purchase.city }}</p>
+                            <p class="fw-bold text-center">Liste des produits achetés</p>
+                            <ul class="list-group list-group-flush text-center">
+                                {% for item in purchase.purchaseItems %}
+                                    <li class="list-group-item"><img src="./../build/images/{{ item.product.picture }}" class="m-2" alt="product picture" style="width: 50px; height: auto">{{ item.quantity }}x <a href="{{ path("products_show", {id: item.product.id}) }}" target="_blank">{{ item.productName }}</a> {{ item.total / 100 }} €</li>
+                                {% endfor %}
+                            </ul>
+                            <p class="text-center"><span class="fw-bold">Total :</span> {{ purchase.total / 100 }} €</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Vous n'avez passé aucune commande pour le moment.</p>
+    {% endif %}
+</main>
+{% endblock %}
+{# {% for purchase in purchases %}
+                    <div>
+                        Numéro 
+                    </div>
                     <tr>
                         <td>{{ purchase.id }}</td>
+                        <td>{{ purchase.fullname }}</td>
                         <td>{{ purchase.streetAddress }} {{ purchase.postalCode }} {{ purchase.city }}</td>
                         <td>{{ purchase.createdAt|date("m/d/Y") }}</td>
                         <td>
@@ -31,11 +58,4 @@
                         </td>
                         <td>{{ purchase.total / 100 }} €</td>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>Vous n'avez passé aucune commande pour le moment.</p>
-    {% endif %}
-</main>
-{% endblock %}
+                {% endfor %} #}

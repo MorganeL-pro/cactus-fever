@@ -4,6 +4,7 @@
 
 {% block body %}
 <main class="profile-main d-flex flex-column align-items-center m-5 gap-3">
+    <a href="{{ path("app_logout") }}" class="btn btn-success align-self-start">Se déconnecter</a>
     <h1>Bienvenue {{ app.user.firstname }}</h1>
     <div class="sections-profile">
         <section class="profile-card">
