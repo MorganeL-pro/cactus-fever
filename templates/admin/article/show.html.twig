@@ -1,38 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+<main class="d-flex flex-column align-items-center m-5">
+    <a href="{{ path('article_index') }}" class="btn btn-success align-self-start" title="Retour à la liste">Retour à la liste</a>
+    <h1 class="m-3">{{ article.title }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ article.id }}</td>
+                <td class="text-center">{{ article.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
-                <td>{{ article.title }}</td>
+                <th>Titre</th>
+                <td class="text-center">{{ article.title }}</td>
             </tr>
             <tr>
-                <th>Text</th>
-                <td>{{ article.text }}</td>
+                <th>Contenu</th>
+                <td class="text-center">{{ article.text }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Créé le</th>
+                <td class="text-center">{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
-                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Modifié le</th>
+                <td class="text-center">{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td class="text-center">{% if article.picture is not null %}<img class="product-img-show" src="/../build/images/{{ article.picture }}" alt="Card image cap" style="height: 200px">{% endif %}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('article_index') }}">back to list</a>
-
-    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-
-    {{ include('admin/article/_delete_form.html.twig') }}
+    <div class="d-flex gap-3">
+        <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-info" title="Editer">Éditer</a>
+        {{ include('admin/article/_delete_form.html.twig') }}
+    </div>
+</main>
 {% endblock %}

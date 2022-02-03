@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/admin/article")
@@ -40,6 +41,23 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setCreatedAt(new DateTime());
+            // verification upload picture
+            $picture = $form->get('picture')->getData();
+            $newFilename = 'article' . '-' . uniqid() . '.' . $picture->guessExtension();
+            // Move the file to the directory where brochures are stored
+            if (is_string($this->getParameter('pictures_directory'))) {
+                try {
+                    $picture->move(
+                        $this->getParameter('pictures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $error) {
+                    // ... handle exception if something happens during file upload
+                    return $this->render('errors/error500.html.twig');
+                }
+            }
+            // instead of its contents
+            $article->setPicture($newFilename);
             $entityManager->persist($article);
             $entityManager->flush();
 
@@ -73,6 +91,24 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setUpdatedAt(new DateTime());
+            // verification upload picture
+            $picture = $form->get('picture')->getData();
+
+            $newFilename = 'article' . '-' . uniqid() . '.' . $picture->guessExtension();
+            // Move the file to the directory where brochures are stored
+            if (is_string($this->getParameter('pictures_directory'))) {
+                try {
+                    $picture->move(
+                        $this->getParameter('pictures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $error) {
+                    // ... handle exception if something happens during file upload
+                    return $this->render('errors/error500.html.twig');
+                }
+            }
+            // instead of its contents
+            $article->setPicture($newFilename);
             $entityManager->flush();
 
             return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);

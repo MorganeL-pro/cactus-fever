@@ -7,7 +7,7 @@
     <a href="{{ path('admin') }}" title="retour au panneau administrateur" class="btn btn-success align-self-start">Retour au panneau administrateur</a>
     <h1 class="m-3">Liste des produits</h1>
 
-    <table class="table  text-center">
+    <table class="table text-center">
         <thead>
             <tr>
                 <th>Id</th>
@@ -15,7 +15,7 @@
                 <th>Description</th>
                 <th>Taille</th>
                 <th>Quantité</th>
-                <th>Crée le</th>
+                <th>Créé le</th>
                 <th>Prix</th>
                 <th>Image</th>
                 <th>Actions</th>
@@ -24,15 +24,15 @@
         <tbody>
         {% for product in products %}
             <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.size }}</td>
-                <td>{{ product.quantity }}</td>
-                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ product.price / 100 }} €</td>
-                <td>{{ product.picture }}</td>
-                <td>
+                <td class="align-middle">{{ product.id }}</td>
+                <td class="align-middle">{{ product.name }}</td>
+                <td class="align-middle">{{ product.description }}</td>
+                <td class="align-middle">{{ product.size }}</td>
+                <td class="align-middle">{{ product.quantity }}</td>
+                <td class="align-middle">{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="align-middle">{{ product.price / 100 }} €</td>
+                <td class="align-middle"><img class="product-img-show" src="/../build/images/{{ product.picture }}" alt="Card image cap" style="height: 200px"></td>
+                <td class="align-middle">
                     <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-primary m-1">Afficher</a>
                     <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-info m-1">Éditer</a>
                 </td>

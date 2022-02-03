@@ -57,7 +57,7 @@ class Article
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $picture;
+    private ?string $picture;
 
     public function __construct()
     {
