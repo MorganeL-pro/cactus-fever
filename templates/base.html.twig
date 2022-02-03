@@ -33,16 +33,16 @@
         {# navbar #}
         <header>
             <nav class="navbar fixed-bottom justify-content-around">
-                <a class="navbar-brand" href="{{ path('products') }}" title="accès à l'eshop">
+                <a class="navbar-brand" href="{{ path('products') }}" title="accéder à l'eshop">
                     E-shop
                 </a>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#" title='accéder aux articles'>
                     <img src="{{ asset('build/images/news.png') }}" alt="news">
                 </a>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#" title="accéder à la recherche">
                     <img src="{{ asset('build/images/search.png') }}" alt="search">
                 </a>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ path('cart_show') }}" title="accéder au panier">
                     <img src="{{ asset('build/images/cart.png') }}" alt="cart">
                 </a>
                 {% if app.user %}
@@ -50,7 +50,7 @@
                         <img src="{{ asset('build/images/compte.png') }}" alt="profile">
                     </a>
                 {% else %}
-                    <a class="navbar-brand" href="{{ path('profile') }}" title="accès au profil">
+                    <a class="navbar-brand" href="{{ path('profile') }}" title="accéder au profil">
                         <img src="{{ asset('build/images/account.png') }}" alt="profile">
                     </a>
                 {% endif %}
@@ -66,7 +66,7 @@
                             <li class="list-group-item"><a href="#">Articles</a></li>
                             <li class="list-group-item"><a href="{{ path('products') }}">E-shop</a></li>
                             <li class="list-group-item"><a href="{{ path('profile') }}">Mon compte</a></li>
-                            <li class="list-group-item"><a href="#">Mon panier</a></li>
+                            <li class="list-group-item"><a href="{{ path('cart_show') }}">Mon panier</a></li>
                             <li class="list-group-item"><a href="#">Aide/FAQ</a></li>
                             <li class="list-group-item"><a href="#">Mentions légales</a></li>
                             <li class="list-group-item"><a href="#">CGU</a></li>
