@@ -1,0 +1,35 @@
+.sections-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $white;
+    border: 3px solid $green;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px lighten($dark-text, 30%);
+    padding: 2rem;
+}
+
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .profile-info-label {
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .sections-profile {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+}

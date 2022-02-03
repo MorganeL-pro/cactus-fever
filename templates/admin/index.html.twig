@@ -4,6 +4,7 @@
 
 {% block body %}
 <main class="panel-admin d-flex flex-column align-items-center m-5 gap-5">
+    <a href="{{ path("app_logout") }}" class="btn btn-success align-self-start" title="se déconnecter">Déconnexion</a>
     <h1>Gestion du catalogue</h1>
     <section class="d-flex flex-column align-items-center m-5 gap-5">
         <a href="{{ path("category_index") }}" title="voir les catégories">Catégories</a>

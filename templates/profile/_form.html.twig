@@ -1,12 +1,7 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}S'inscrire{% endblock %}
-
-{% block body %}
-<section class="register-form d-flex flex-column m-3">
+<section class="register-form d-flex flex-column">
     <div class="connexion-title d-flex gap-3">
         <img src="{{ asset('build/images/cactus-registration.png') }}" alt="cactus-registration">
-        <h1>S'inscrire</h1>
+        <h1>Modifier mes informations</h1>
     </div>
     {{ form_start(registrationForm) }}
         <div class="form-fields d-flex">
@@ -36,15 +31,10 @@
                 {{ form_row(registrationForm.email, {
                     label: 'Adresse email'
                 }) }}
-                {{ form_row(registrationForm.plainPassword, {
-                    label: 'Mot de passe'
-                }) }}
+                <a href="#" class="btn btn-info">Modifier mon mot de passe</a>
             </div>
         </div>
-        {{ form_row(registrationForm.agreeTerms, {
-            label: ' J\'accepte les CGU ainsi que le fait que mes données soient utilisées dans le cadre de la politique de confidentialité.'
-        }) }}
-        <button type="submit" class="btn-register">S'inscrire</button>
+        <button type="submit" class="btn btn-success m-2">Enregistrer</button>
     {{ form_end(registrationForm) }}
+    {{ include('profile/_delete_form.html.twig') }}
 </section>
-{% endblock %}
