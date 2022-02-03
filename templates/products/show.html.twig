@@ -12,7 +12,7 @@
           <p>{{ product.category.name }}</p>
           <p>{{ product.size }} - {{ product.price / 100 }} €</p>
           <p>{{ product.description }}</p>
-          <a href="#" class="btn btn-success cart-btn" title="ajouter au panier">Ajouter au panier</a>
+          <a href="{{ path("cart_add", {id: product.id}) }}" class="btn btn-success cart-btn" title="ajouter au panier">Ajouter au panier</a>
         </div>
     </div>
     <p class="fw-bold">En lien avec ce produit</p>
