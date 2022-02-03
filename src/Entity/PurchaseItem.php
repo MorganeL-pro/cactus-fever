@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PurchaseItemRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,7 +16,7 @@ class PurchaseItem
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="purchase")
@@ -31,22 +32,22 @@ class PurchaseItem
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $productName;
+    private string $productName;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $productPrice;
+    private int $productPrice;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $quantity;
+    private int $quantity;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $total;
+    private int $total;
 
     public function getId(): ?int
     {

@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -17,27 +19,33 @@ class Product
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez donner un nom au produit.")
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(
+     *      message = "Veuillez noter une description.")
      */
-    private $description;
+    private string $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $size;
+    private string $size;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(
+     *      message = "Veuillez rentrer un nombre de produits disponibles en stock.")
      */
-    private $quantity;
+    private int $quantity;
 
     /**
      * @ORM\Column(type="datetime")
@@ -46,8 +54,10 @@ class Product
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer un prix en centimes.")
      */
-    private $price;
+    private int $price;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")

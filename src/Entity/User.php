@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -26,8 +27,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(
+     *      message = "Veuillez entrer une adresse mail.")
      */
-    private $email;
+    private string $email;
 
     /**
      * @ORM\Column(type="json")
@@ -42,33 +45,48 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer votre prénom.")
      */
-    private $firstname;
+    private string $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer votre nom de famille.")
      */
-    private $lastname;
+    private string $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez donner votre numéro de téléphone.")
+     * @Assert\Regex(
+     *      pattern ="/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/",
+     *      message = "Merci d'entrer un numéro de téléphone valide.")
      */
-    private $phone;
+    private string $phone;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer une adresse.")
      */
-    private $streetAddress;
+    private string $streetAddress;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer un code postal.")
      */
     private $postalCode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer une ville.")
      */
-    private $city;
+    private string $city;
 
     /**
      * @ORM\Column(type="datetime")
