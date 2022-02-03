@@ -29,6 +29,14 @@
         </section>
         <section class="profile-card">
             <h2 class="h3 text-center border-bottom">Mes commandes</h2>
+            {% if lastPurchase is not null %}
+                <p>N° {{ lastPurchase.id }}</p>
+                <p>Créée le {{ lastPurchase.createdAt|date("m/d/Y") }}</p>
+                <p>Status : {{ lastPurchase.status }}</p>
+                <a href="{{ path("purchase_index", {id: app.user.id}) }}">Voir plus</a>
+            {% else %}
+                <p>Vous n'avez pas encore passé de commande.</p>
+            {% endif %}
         </section>
     </div>
 </main>
