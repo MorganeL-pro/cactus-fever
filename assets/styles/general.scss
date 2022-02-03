@@ -7,6 +7,19 @@ body, .navbar {
     font-family: $font-text;
 }
 
+.informations {
+
+    a {
+        color: darken($green, 65%);
+        text-decoration: none;
+
+        &:hover, &:focus {
+
+            color: darken($green, 55%);
+        }
+    }
+}
+
 .logo-title {
 
     padding: 1rem;
