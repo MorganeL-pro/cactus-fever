@@ -42,12 +42,13 @@
                 <a class="navbar-brand" href="#" title="accéder à la recherche">
                     <img src="{{ asset('build/images/search.png') }}" alt="search">
                 </a>
-                <a class="navbar-brand" href="{{ path('cart_show') }}" title="accéder au panier">
+                <a class="navbar-brand d-flex flex-column flex-column-reverse" href="{{ path('cart_show') }}" title="accéder au panier">
                     <img src="{{ asset('build/images/cart.png') }}" alt="cart">
+                    <span style="font-size: 0.7rem">({{ cartService.total / 100 }} €)</span>
                 </a>
                 {% if app.user %}
                     <a class="navbar-brand" href="{{ path('profile') }}" title="accès au profil">
-                        <img src="{{ asset('build/images/compte.png') }}" alt="profile">
+                        <img src="{{ asset('build/images/compte.png') }}" alt="profile" style="width: 30px; height: 30px">
                     </a>
                 {% else %}
                     <a class="navbar-brand" href="{{ path('profile') }}" title="accéder au profil">

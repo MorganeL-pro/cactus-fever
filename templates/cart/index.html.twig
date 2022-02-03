@@ -5,30 +5,37 @@
 {% block body %}
 <h1 class="m-3">Mon panier</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Produit</th>
-            <th>Prix</th>
-            <th>Quantité</th>
-            <th>Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in items %}
+{% if items|length > 0 %}
+    <table class="table">
+        <thead>
             <tr>
-                <td>{{ item.product.name }}</td>
-                <td>{{ item.product.price / 100 }} €</td>
-                <td>{{ item.quantity }}</td>
-                <td>{{ item.product.price * item.quantity / 100 }} €</td>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th></th>
             </tr>
-        {% endfor %}
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3">Total : </td>
-            <td>{{ total / 100 }} €</td>
-        </tr>
-    </tfoot>
-</table>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td><a href="{{ path("products_show", {id: item.product.id}) }}" target="_blank"><img src="../build/images/{{ item.product.picture }}" alt="product picture" style="width: 50px; height: 50px"></a> {{ item.product.name }}</td>
+                    <td>{{ item.product.price / 100 }} €</td>
+                    <td><a href="{{ path("cart_decrement", {id: item.product.id}) }}" class="btn btn-info fw-bold">-</a> {{ item.quantity }} <a href="{{ path("cart_add", {id: item.product.id}) }}?returnToCart=true" class="btn btn-info fw-bold">+</a></td>
+                    <td>{{ item.total / 100 }} €</td>
+                    <td><a href="{{ path("cart_delete", {id: item.product.id}) }}" title="supprimer ce produit" class="btn btn-danger">X</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total : </td>
+                <td colspan="2">{{ total / 100 }} €</td>
+            </tr>
+        </tfoot>
+    </table>
+{% else %}
+    <h2>Votre panier est vide 😢</h2>
+{% endif %}
+
 {% endblock %}
