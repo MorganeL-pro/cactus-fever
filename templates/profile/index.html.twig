@@ -3,5 +3,33 @@
 {% block title %}Mon compte{% endblock %}
 
 {% block body %}
-
+<main class="profile-main d-flex flex-column align-items-center m-5 gap-3">
+    <h1>Bienvenue {{ app.user.firstname }}</h1>
+    <div class="sections-profile">
+        <section class="profile-card">
+            <h2 class="h3 text-center border-bottom">Mes informations</h2>
+            <div class="profile-info">
+                <p class="profile-info-label">Prénom</p>
+                <p>{{ app.user.firstname }}</p>
+            </div>
+            <div class="profile-info">
+                <p class="profile-info-label">Nom</p>
+                <p>{{ app.user.lastname }}</p>
+            </div>
+            <div class="profile-info">
+                <p class="profile-info-label">Téléphone</p>
+                <p>{{ app.user.phone }}</p>
+            </div>
+            <div class="profile-info">
+                <p class="profile-info-label">Adresse</p>
+                <p>{{ app.user.streetAddress }}</p>
+                <p>{{ app.user.postalCode }} {{ app.user.city }}</p>
+            </div>
+            <a href="{{ path("profile_edit", {id: app.user.id}) }}" title="éditer mes informations" class="btn btn-success">Éditer</a>
+        </section>
+        <section class="profile-card">
+            <h2 class="h3 text-center border-bottom">Mes commandes</h2>
+        </section>
+    </div>
+</main>
 {% endblock %}
