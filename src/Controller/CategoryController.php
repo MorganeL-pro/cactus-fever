@@ -50,7 +50,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="category_show", methods={"GET"})
+     * @Route("/{id}", name="category_show", requirements={"id"="\d+"}, methods={"GET"})
      */
     public function show(Category $category): Response
     {
@@ -60,7 +60,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="category_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="category_edit", requirements={"id"="\d+"}, methods={"GET", "POST"})
      */
     public function edit(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
@@ -80,7 +80,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="category_delete", methods={"POST"})
+     * @Route("/{id}", name="category_delete", requirements={"id"="\d+"}, methods={"POST"})
      */
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {

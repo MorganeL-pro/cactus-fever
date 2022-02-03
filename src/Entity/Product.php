@@ -74,9 +74,15 @@ class Product
      */
     private $purchaseItems;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="product")
+     */
+    private $articles;
+
     public function __construct()
     {
         $this->purchase = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -205,6 +211,33 @@ class Product
             if ($purchase->getProduct() === $this) {
                 $purchase->setProduct(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            $article->removeProduct($this);
         }
 
         return $this;

@@ -73,7 +73,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="product_show", methods={"GET"})
+     * @Route("/{id}", name="product_show", requirements={"id"="\d+"}, methods={"GET"})
      */
     public function show(Product $product): Response
     {
@@ -83,7 +83,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="product_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="product_edit", requirements={"id"="\d+"}, methods={"GET", "POST"})
      */
     public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
@@ -121,7 +121,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="product_delete", methods={"POST"})
+     * @Route("/{id}", name="product_delete", requirements={"id"="\d+"}, methods={"POST"})
      */
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
