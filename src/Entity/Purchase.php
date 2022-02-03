@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PurchaseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,37 +21,45 @@ class Purchase
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer un nom complet.")
      */
-    private $fullName;
+    private string $fullName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer une adresse.")
      */
-    private $streetAddress;
+    private string $streetAddress;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer un code postal.")
      */
-    private $postalCode;
+    private string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Veuillez indiquer une ville.")
      */
-    private $city;
+    private string $city;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $total;
+    private int $total;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $status = 'EN COURS';
+    private string $status = 'EN COURS';
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="purchases")

@@ -27,7 +27,11 @@
         <div class="card-body d-flex flex-column align-items-center">
           <h5 class="card-title text-center fw-bold">{{ product.name }}</h5>
           <p>{{ product.size }} - {{ product.price / 100 }} €</p>
-          <a href="{{ path("cart_add", {id: product.id}) }}" class="btn btn-success cart-btn" title="ajouter au panier">Ajouter au panier</a>
+          {% if product.quantity > 0 %}
+            <a href="{{ path("cart_add", {id: product.id}) }}?returnToIndex=true" class="btn btn-success cart-btn" title="ajouter au panier">Ajouter au panier</a>
+          {% else %}
+            <p class="btn btn-warning disabled">En rupture de stock</p>
+          {% endif %}
         </div>
       </div>
     {% endfor %}
