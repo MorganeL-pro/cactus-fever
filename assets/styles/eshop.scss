@@ -15,14 +15,13 @@
 }
 
 .product-card {
-    
     background-color: $white;
     border: 3px solid $green;
     border-radius: 10px;
     box-shadow: 0 4px 4px lighten($dark-text, 30%);
 
     .product-img {
-        max-height: 250px;
+        height: 250px;
     }
 }
 
