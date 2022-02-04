@@ -6,7 +6,7 @@
 <main class="d-flex flex-column align-items-center m-5">
     <a href="{{ path('admin') }}" title="retour au panneau administrateur" class="btn btn-success align-self-start">Retour au panneau administrateur</a>
     <h1 class="m-3">Liste des produits</h1>
-
+    <a href="{{ path('product_new') }}" class="btn btn-info">Créer un nouveau produit</a>
     <table class="table text-center">
         <thead>
             <tr>
@@ -44,6 +44,5 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('product_new') }}" class="btn btn-info">Créer un nouveau produit</a>
 </main>
 {% endblock %}

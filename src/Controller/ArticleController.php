@@ -91,24 +91,27 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setUpdatedAt(new DateTime());
-            // verification upload picture
-            $picture = $form->get('picture')->getData();
 
-            $newFilename = 'article' . '-' . uniqid() . '.' . $picture->guessExtension();
-            // Move the file to the directory where brochures are stored
-            if (is_string($this->getParameter('pictures_directory'))) {
-                try {
-                    $picture->move(
-                        $this->getParameter('pictures_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $error) {
-                    // ... handle exception if something happens during file upload
-                    return $this->render('errors/error500.html.twig');
+            if ($form->get('picture')->getData() != null) {
+                // verification upload picture
+                $picture = $form->get('picture')->getData();
+
+                $newFilename = 'article' . '-' . uniqid() . '.' . $picture->guessExtension();
+                // Move the file to the directory where brochures are stored
+                if (is_string($this->getParameter('pictures_directory'))) {
+                    try {
+                        $picture->move(
+                            $this->getParameter('pictures_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $error) {
+                        // ... handle exception if something happens during file upload
+                        return $this->render('errors/error500.html.twig');
+                    }
                 }
+                // instead of its contents
+                $article->setPicture($newFilename);
             }
-            // instead of its contents
-            $article->setPicture($newFilename);
             $entityManager->flush();
 
             return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);
