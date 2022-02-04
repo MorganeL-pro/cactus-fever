@@ -1,6 +1,6 @@
-# Cactus Fever*
+# <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="10%"></img>Cactus Fever<img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="10%"></img>
 
-## Presentation
+## <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Presentation
 
 It's symfony website-skeleton project with some additional library (webpack, fixtures) and tools to validate code standards.
 
@@ -10,12 +10,12 @@ It's symfony website-skeleton project with some additional library (webpack, fix
     
   If tests fail, the commit is canceled and a warning message is displayed to developper.
 
-### Prerequisites
+### <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Prerequisites
 
 1. Check composer is installed
 2. Check yarn & node are installed
 
-### Install
+### <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Install
 
 1. Clone this project
 2. Run `composer install`
@@ -24,7 +24,7 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 5. Create a file .env.local in root (copy of .env file)
 6. Configure your database in .env.local
 
-### Working
+### <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Working
 
 1. Run migrations files with `bin/console d:m:m`
 2. Run `symfony server:start` to launch your local php web server
@@ -32,17 +32,17 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 
 ==> A special user with admin role is created. Ask me for password to test admin panel
 
-### Testing
+### <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Testing
 
 Run `php ./vendor/bin/phpcs` to launch PHP code sniffer
 
-### Windows Users
+### <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Windows Users
 
 If you develop on Windows, you should edit you git configuration to change your end of line rules with this command :
 
 `git config --global core.autocrlf true`
 
-## Deployment
+## <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Deployment
 
 Some files are used to manage automatic deployments (using tools as Caprover, Docker and Github Action). Please do not modify them.
 
@@ -54,12 +54,17 @@ Some files are used to manage automatic deployments (using tools as Caprover, Do
 * [php.ini](https://github.com/WildCodeSchool/sf4-pjt3-starter-kit/blob/master/php.ini) Php configuration
 
 
-## Built With
+## <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Built With
 
 * [Symfony](https://github.com/symfony/symfony)
 * [GrumPHP](https://github.com/phpro/grumphp)
 * [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 
-## Authors
+## <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Authors
 
-Morgane Lailler (and some support form maxime, Bruno and Elodie)
+Morgane Lailler (and some support form Maxime, Bruno and Elodie)
+
+## <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Ressources
+
+* [Google Doc](https://docs.google.com/document/d/1PZM_1EBGxjuZ-Cxmx0NVS8WtejDLlMU2SBTo5tPsB_M/edit?usp=sharing)
+
