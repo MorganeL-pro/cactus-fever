@@ -62,4 +62,8 @@ Some files are used to manage automatic deployments (using tools as Caprover, Do
 
 ## Authors
 
-Morgane Lailler (and some support form maxime, Bruno and Elodie)
+Morgane Lailler (and some support form Maxime, Bruno and Elodie)
+
+## Ressources
+
+* [Google Doc](https://docs.google.com/document/d/1PZM_1EBGxjuZ-Cxmx0NVS8WtejDLlMU2SBTo5tPsB_M/edit?usp=sharing)
