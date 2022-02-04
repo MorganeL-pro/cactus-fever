@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ProfileController extends AbstractController
 {
@@ -57,12 +58,21 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/delete", name="profile_delete", methods={"POST"})
+     * @Route("/delete/{id}", name="profile_delete", methods={"POST"})
      * @IsGranted("ROLE_USER")
      */
-    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
-    {
+    public function delete(
+        Request $request,
+        User $user,
+        EntityManagerInterface $entityManager,
+        TokenStorageInterface $tokenStorage
+    ): Response {
+        $user = $this->getUser();
+        $session = $request->getSession();
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+            $entityManager->flush();
+            $tokenStorage->setToken(null);
+            $session->invalidate();
             $entityManager->remove($user);
             $entityManager->flush();
         }
