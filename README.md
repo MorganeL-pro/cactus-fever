@@ -30,7 +30,7 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 2. Run `symfony server:start` to launch your local php web server
 3. Run `yarn run dev --watch` to launch your local server for assets
 
-==> A special user with admin role is created. Ask me for password to test admin panel
+==> A special user with admin role is created. <a href="mailto:tomoyo4@gmail.com?subject=Cactus Fever">Ask me for password to test admin panel</a>
 
 ### <img src="https://cdn-icons-png.flaticon.com/512/1320/1320728.png" width="5%"></img>Testing
 
