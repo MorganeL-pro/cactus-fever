@@ -7,6 +7,7 @@
         <a href="{{ path('article_index') }}" class="btn btn-success align-self-start">Retour à la liste</a>
         <h1 class="m-3">Éditer l'article</h1>
         <div class="d-flex flex-wrap align-items-end gap-3">
+            {% if article.picture is not null %}<img class="product-img-show" src="/../build/images/{{ article.picture }}" alt="Card image cap" style="height: 300px">{% endif %}
             {{ include('admin/article/_form.html.twig', {'button_label': 'Enregistrer'}) }}
             {{ include('admin/article/_delete_form.html.twig') }}
         </div>

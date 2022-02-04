@@ -6,7 +6,8 @@
     <main class="d-flex flex-column align-items-center m-5">
         <a href="{{ path('product_index') }}" class="btn btn-success align-self-start">Retour à la liste</a>
         <h1 class="m-3">Éditer le produit</h1>
-        <div class="d-flex flex-wrap align-items-end gap-3">
+        <div class="text-center d-flex flex-wrap align-items-end gap-3">
+            <img class="product-img-show" src="/../build/images/{{ product.picture }}" alt="Card image cap" style="height: 300px">
             {{ include('admin/product/_form.html.twig', {'button_label': 'Enregistrer'}) }}
             {{ include('admin/product/_delete_form.html.twig') }}
         </div>
