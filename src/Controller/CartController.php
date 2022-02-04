@@ -32,7 +32,7 @@ class CartController extends AbstractController
             throw $this->createNotFoundException("Le produit $id n'existe pas !");
         }
 
-        if ($product->quantity <= 0) {
+        if ($product->getQuantity() <= 0) {
             $this->addFlash("alert", "Désolé, le produit n'est malheureusement plus en stock");
             return $this->redirectToRoute('products');
         }
