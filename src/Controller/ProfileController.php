@@ -63,7 +63,7 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="profile_delete", requirements={"id"="\d+"}, methods={"POST"})
+     * @Route("/delete/{id}", name="profile_delete", requirements={"id"="\d+"})
      * @IsGranted("ROLE_USER")
      */
     public function delete(
@@ -85,7 +85,7 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/profile/edit-password", name="edit_password", requirements={"id"="\d+"})
+     * @Route("/profile/edit-password", name="edit_password")
      */
     public function editPassword(
         Request $request,
