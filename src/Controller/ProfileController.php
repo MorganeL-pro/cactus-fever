@@ -4,13 +4,18 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\EditPasswordType;
 use App\Repository\PurchaseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ProfileController extends AbstractController
@@ -37,7 +42,7 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/profile/edit/{id}", name="profile_edit")
+     * @Route("/profile/edit/{id}", requirements={"id"="\d+"}, name="profile_edit")
      * @IsGranted("ROLE_USER")
      */
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
@@ -58,7 +63,7 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="profile_delete", methods={"POST"})
+     * @Route("/delete/{id}", name="profile_delete", requirements={"id"="\d+"}, methods={"POST"})
      * @IsGranted("ROLE_USER")
      */
     public function delete(
@@ -67,7 +72,6 @@ class ProfileController extends AbstractController
         EntityManagerInterface $entityManager,
         TokenStorageInterface $tokenStorage
     ): Response {
-        $user = $this->getUser();
         $session = $request->getSession();
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager->flush();
@@ -78,5 +82,46 @@ class ProfileController extends AbstractController
         }
 
         return $this->redirectToRoute('profile', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/profile/edit-password", name="edit_password", requirements={"id"="\d+"})
+     */
+    public function editPassword(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        UserPasswordHasherInterface $passwordHasher,
+        MailerInterface $mailer
+    ) {
+        $user = $this->getUser();
+        $form = $this->createForm(EditPasswordType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $plaintextPassword = $form['plainPassword']->getData();
+            if (is_string($plaintextPassword) && $user instanceof User) {
+                $hashedPassword = $passwordHasher->hashPassword(
+                    $user,
+                    $plaintextPassword
+                );
+                $user->setPassword($hashedPassword);
+                $entityManager->flush();
+                $this->addFlash("success", "Le mot de passe a bien été modifié.");
+                $email = (new TemplatedEmail())
+                    ->from('admin@cactusfever.com')
+                    ->to(new Address($user->getEmail()))
+                    ->subject('Mot de passe modifié')
+                    ->htmlTemplate('emails/password-modified.html.twig')
+                    ->context([
+                        'username' => $user->getEmail(),
+                    ])
+                ;
+                $mailer->send($email);
+                return $this->redirectToRoute('profile', [], Response::HTTP_SEE_OTHER);
+            }
+        }
+
+        return $this->renderForm('profile/edit-password.html.twig', [
+            'form' => $form,
+        ]);
     }
 }

@@ -31,7 +31,7 @@
                 {{ form_row(registrationForm.email, {
                     label: 'Adresse email'
                 }) }}
-                <a href="#" class="btn btn-info">Modifier mon mot de passe</a>
+                <a href="{{ path('edit_password') }}" class="btn btn-info">Modifier mon mot de passe</a>
             </div>
         </div>
         <button type="submit" class="btn btn-success m-2">Enregistrer</button>
