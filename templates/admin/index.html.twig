@@ -5,12 +5,13 @@
 {% block body %}
 <main class="panel-admin d-flex flex-column align-items-center m-5 gap-5">
     <a href="{{ path("app_logout") }}" class="btn btn-success align-self-start" title="se déconnecter">Déconnexion</a>
-    <h1>Gestion du catalogue</h1>
+    <h1>Panneau administrateur</h1>
     <section class="d-flex flex-column align-items-center m-5 gap-5">
         <a href="{{ path("category_index") }}" title="voir les catégories">Catégories</a>
         <a href="{{ path("product_index") }}" title="voir les produits">Produits</a>
         <a href="{{ path("admin_purchases") }}" title="voir les commandes">Commandes</a>
         <a href="{{ path("article_index") }}" title="voir les articles">Articles</a>
+        <a href="{{ path("edit_password") }}" title="voir les réglages">Réglages</a>
     </section>
 </main>
 {% endblock %}
