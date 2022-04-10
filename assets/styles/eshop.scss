@@ -24,6 +24,11 @@
     .product-img {
         height: 250px;
     }
+
+    &:hover, &:focus {
+
+        outline: 3px solid $green;
+    }
 }
 
 .cart-btn {
