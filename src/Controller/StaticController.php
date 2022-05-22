@@ -39,4 +39,12 @@ class StaticController extends AbstractController
     {
         return $this->render('informations/rgpd.html.twig');
     }
+
+     /**
+     * @Route("/informations/contact", name="static_contact")
+     */
+    public function contact(): Response
+    {
+        return $this->render('informations/contact.html.twig');
+    }
 }

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<div class="container w-75 d-flex flex-column align-items-center mt-5">
+    <form action="{{ path('search') }}">
+        <input
+            type="search"
+            name="q"
+            class="form-control"
+            placeholder="Rechercher..."
+            aria-label="Search"
+            value="{{ app.request.query.get('q') }}"
+        >
+    </form>
+
+    {% if search is defined and search is not null %}
+    <div class="d-flex flex-wrap justify-content-around gap-4 m-5">
+        {% for product in search %}
+        <div class="product-card card" style="width: 18rem;">
+            <a href="{{ path("products_show", {id: product.id}) }}" title="voir le produit en détail">
+                <img class="product-img card-img-top" src="build/images/{{ product.picture }}" alt="Card image cap">
+            </a>
+            <div class="card-body d-flex flex-column align-items-center">
+              <h5 class="card-title text-center fw-bold">{{ product.name }}</h5>
+              <p>{{ product.size }} - {{ product.price / 100 }} €</p>
+              {% if product.quantity > 0 %}
+                <a href="{{ path("cart_add", {id: product.id}) }}?returnToIndex=true" class="btn btn-success cart-btn" title="ajouter au panier">Ajouter au panier</a>
+              {% else %}
+                <p class="btn btn-warning disabled">En rupture de stock</p>
+              {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="mt-3">Pas de résultat :(</p>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

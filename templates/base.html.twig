@@ -39,7 +39,7 @@
                 <a class="navbar-brand" href="{{ path("articles_index") }}" title='accéder aux articles'>
                     <img src="{{ asset('build/images/news.png') }}" alt="news">
                 </a>
-                <a class="navbar-brand" href="#" title="accéder à la recherche">
+                <a class="navbar-brand" href="{{ path("search") }}" title="accéder à la recherche">
                     <img src="{{ asset('build/images/search.png') }}" alt="search">
                 </a>
                 <a class="navbar-brand d-flex flex-column flex-column-reverse" href="{{ path('cart_show') }}" title="accéder au panier">
@@ -71,7 +71,7 @@
                             <li class="list-group-item"><a href="{{ path("static_legal") }}">Mentions légales</a></li>
                             <li class="list-group-item"><a href="{{ path("static_cgu") }}">CGV - CGU</a></li>
                             <li class="list-group-item"><a href="{{ path("static_rgpd") }}">RGPD</a></li>
-                            <li class="list-group-item"><a href="#">Nous contacter</a></li>
+                            <li class="list-group-item"><a href="{{ path("static_contact") }}">Nous contacter</a></li>
                           </ul>
                     </div>
                     <div class="offcanvas-header">
