@@ -19,7 +19,7 @@ class PurchaseItem
     private int $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="purchase")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="purchaseItems")
      */
     private $product;
 
