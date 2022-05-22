@@ -33,7 +33,7 @@
             </div>
         </div>
         {% endfor %}
-    {% else %}
+    {% elseif search is defined and search is null %}
         <p class="mt-3">Pas de résultat :(</p>
     {% endif %}
     </div>
