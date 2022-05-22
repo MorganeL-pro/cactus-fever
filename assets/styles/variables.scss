@@ -1,10 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Rubik+Beastly&display=swap');
+// font-family
+@font-face {
+    font-family: 'Nunito';
+    src: url('/assets/fonts/Nunito-Italic-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Rubik Beastly';
+    src: url('/assets/fonts/RubikBeastly-Regular.ttf');
+}
 
 
 $font-title: 'Rubik Beastly';
 $font-text: 'Nunito';
 
-//colors
+// colors
 
 $dark-text: #606060;
 $yellow-navbar: #fef8cc;
