@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Recherche{% endblock %}
 
 {% block body %}
 <div class="container w-75 d-flex flex-column align-items-center mt-5">
     <form action="{{ path('search') }}">
+        <label for="search" class="h2">Que cherchez-vous ?</label>
         <input
             type="search"
+            id="search"
             name="q"
             class="form-control"
             placeholder="Rechercher..."

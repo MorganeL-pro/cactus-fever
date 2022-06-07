@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Cactus Fever | {% block title %} {% endblock %}</title>
         <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -13,13 +14,16 @@
         {% endblock %}
     </head>
     <body>
-        {# banner #}
-        <section class="logo-title d-flex justify-content-center align-items-center gap-4">
-            <a href="{{ path('home') }}">
-                <img src="{{ asset('build/images/cactus-logo.png') }}" alt="cactus-logo">
-            </a>
-            <h1>Cactus Fever</h1>
-        </section>
+        <header>
+           {% include 'components/_nav-hidden.html.twig' %}
+            {# banner #}
+            <section class="logo-title d-flex justify-content-center align-items-center gap-4">
+                <a href="{{ path('home') }}">
+                    <img src="{{ asset('build/images/cactus-logo.png') }}" alt="cactus-logo">
+                </a>
+                <h1>Cactus Fever</h1>
+            </section>
+        </header>
         {# flash messages #}
         {% for label, messages in app.flashes %}
             {% for message in messages %}
@@ -31,54 +35,54 @@
         {% endfor %}
         {% block body %}{% endblock %}
         {# navbar #}
-        <header>
-            <nav class="navbar fixed-bottom justify-content-around">
-                <a class="navbar-brand" href="{{ path('products') }}" title="accéder à l'eshop">
-                    E-shop
-                </a>
-                <a class="navbar-brand" href="{{ path("articles_index") }}" title='accéder aux articles'>
-                    <img src="{{ asset('build/images/news.png') }}" alt="news">
-                </a>
-                <a class="navbar-brand" href="{{ path("search") }}" title="accéder à la recherche">
-                    <img src="{{ asset('build/images/search.png') }}" alt="search">
-                </a>
-                <a class="navbar-brand d-flex flex-column flex-column-reverse" href="{{ path('cart_show') }}" title="accéder au panier">
-                    <img src="{{ asset('build/images/cart.png') }}" alt="cart">
-                    {% if cartService.total > 0 %}
-                        <span style="font-size: 0.7rem">({{ cartService.total / 100 }} €)</span>
-                    {% endif %}
-                </a>
-                {% if app.user %}
-                    <a class="navbar-brand" href="{{ path('profile') }}" title="accès au profil">
-                        <img src="{{ asset('build/images/compte.png') }}" alt="profile" style="width: 30px; height: 30px">
-                    </a>
-                {% else %}
-                    <a class="navbar-brand" href="{{ path('profile') }}" title="accéder au profil">
-                        <img src="{{ asset('build/images/account.png') }}" alt="profile">
-                    </a>
+        <nav class="navbar fixed-bottom justify-content-around" style="min-height: 70px">
+            <a class="navbar-brand" href="{{ path('products') }}" title="accéder à l'eshop">
+                E-shop
+            </a>
+            <a class="navbar-brand" href="{{ path("articles_index") }}" title='accéder aux articles'>
+                <img src="{{ asset('build/images/news.png') }}" alt="news">
+            </a>
+            <a class="navbar-brand" href="{{ path("search") }}" title="accéder à la recherche">
+                <img src="{{ asset('build/images/search.png') }}" alt="search">
+            </a>
+            <a class="navbar-brand d-flex flex-column flex-column-reverse" href="{{ path('cart_show') }}" title="accéder au panier">
+                <img src="{{ asset('build/images/cart.png') }}" alt="cart">
+                {% if cartService.total > 0 %}
+                    <span style="font-size: 0.7rem">({{ cartService.total / 100 }} €)</span>
                 {% endif %}
-                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">menu</button>
-
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-body">
-                        <ul class="list-group list-group-flush d-flex flex-column align-items-center">
-                            <li class="list-group-item"><a href="{{ path('home') }}">Accueil</a></li>
-                            <li class="list-group-item"><a href="{{ path("articles_index") }}">Articles</a></li>
-                            <li class="list-group-item"><a href="{{ path('products') }}">E-shop</a></li>
-                            <li class="list-group-item"><a href="{{ path('profile') }}">Mon compte</a></li>
-                            <li class="list-group-item"><a href="{{ path('cart_show') }}">Mon panier</a></li>
-                            <li class="list-group-item"><a href="{{ path("static_help") }}">Aide/FAQ</a></li>
-                            <li class="list-group-item"><a href="{{ path("static_legal") }}">Mentions légales</a></li>
-                            <li class="list-group-item"><a href="{{ path("static_cgu") }}">CGV - CGU</a></li>
-                            <li class="list-group-item"><a href="{{ path("static_rgpd") }}">RGPD</a></li>
-                            <li class="list-group-item"><a href="{{ path("static_contact") }}">Nous contacter</a></li>
-                          </ul>
-                    </div>
-                    <div class="offcanvas-header">
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
+            </a>
+            {% if app.user %}
+                <a class="navbar-brand" href="{{ path('profile') }}" title="accès au profil">
+                    <img src="{{ asset('build/images/compte.png') }}" alt="profile" style="width: 30px; height: 30px">
+                </a>
+            {% else %}
+                <a class="navbar-brand" href="{{ path('profile') }}" title="accéder au profil">
+                    <img src="{{ asset('build/images/account.png') }}" alt="profile">
+                </a>
+            {% endif %}
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">menu</button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div>
+                    <h3 id="offcanvasRightLabel" class="text-center mt-3">Cactus-Fever</h3>
                 </div>
-              </nav>
-        </header>
+                <div class="offcanvas-body">
+                    <ul class="list-group list-group-flush d-flex flex-column align-items-center">
+                        <li class="list-group-item"><a href="{{ path('home') }}">Accueil</a></li>
+                        <li class="list-group-item"><a href="{{ path("articles_index") }}">Articles</a></li>
+                        <li class="list-group-item"><a href="{{ path('products') }}">E-shop</a></li>
+                        <li class="list-group-item"><a href="{{ path('profile') }}">Mon compte</a></li>
+                        <li class="list-group-item"><a href="{{ path('cart_show') }}">Mon panier</a></li>
+                        <li class="list-group-item"><a href="{{ path("static_help") }}">Aide/FAQ</a></li>
+                        <li class="list-group-item"><a href="{{ path("static_legal") }}">Mentions légales</a></li>
+                        <li class="list-group-item"><a href="{{ path("static_cgu") }}">CGV - CGU</a></li>
+                        <li class="list-group-item"><a href="{{ path("static_rgpd") }}">RGPD</a></li>
+                        <li class="list-group-item"><a href="{{ path("static_contact") }}">Nous contacter</a></li>
+                        </ul>
+                </div>
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+            </div>
+        </nav>
     </body>
 </html>
