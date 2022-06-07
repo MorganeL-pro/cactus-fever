@@ -1,7 +1,7 @@
 body {
-    background-image: url('../images/background-cactus.jpg');
-    background-repeat: repeat;
-    //background-color: lighten($green, 6%);
+    //background-image: url('../images/background-cactus.jpg');
+    //background-repeat: repeat;
+    background-color: lighten($green, 6%);
 }
 
 .e-shop-home, .articles-home {
@@ -12,7 +12,6 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     box-shadow: 0 4px 4px lighten($dark-text, 30%);
-    // border: 3px solid $green;
     border-radius: 10px;
     text-decoration: none;
     color: $black;

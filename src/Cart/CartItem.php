@@ -3,6 +3,7 @@
 namespace App\Cart;
 
 use App\Entity\Product;
+use Exception;
 
 class CartItem
 {
@@ -17,6 +18,9 @@ class CartItem
 
     public function getTotal(): int
     {
+        if ($this->product->getPrice() < 0) {
+            throw new Exception('Price can\'t be negative');
+        }
         return $this->product->getPrice() * $this->quantity;
     }
 }

@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container w-75 d-flex flex-column align-items-center mt-5">
-    <form action="{{ path('search') }}">
+    <form action="{{ path('search') }}" class="d-flex flex-column align-items-center gap-2">
         <label for="search" class="h2">Que cherchez-vous ?</label>
         <input
             type="search"
@@ -15,6 +15,7 @@
             aria-label="Search"
             value="{{ app.request.query.get('q') }}"
         >
+        <button type="submit" class="btn btn-success w-50">OK</button>
     </form>
 
     {% if search is defined and search is not null %}
