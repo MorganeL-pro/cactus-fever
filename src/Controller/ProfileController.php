@@ -85,6 +85,10 @@ class ProfileController extends AbstractController
     }
 
     /**
+     * editPassword() handles EditPasswordType that allows a user
+     * to change her or his password. It hashes the password before
+     * set it to User. It also sends an email to User to inform
+     * her or him that password has been modified.
      * @Route("/profile/edit-password", name="edit_password")
      */
     public function editPassword(

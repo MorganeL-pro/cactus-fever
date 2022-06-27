@@ -10,6 +10,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * CartController handles routes for a user's cart and uses
+ * methods from CartService
+*/
 class CartController extends AbstractController
 {
     protected ProductRepository $productRepository;
@@ -23,23 +27,28 @@ class CartController extends AbstractController
         $this->cartService = $cartService;
     }
     /**
+     * Uses add() method from CartService to add the product in Cart or increase quantity
      * @Route("/cart/add/{id}", name="cart_add", requirements={"id"="\d+"})
      */
     public function add(int $id, Request $request): Response
     {
+        // get the product from database
         $product = $this->productRepository->find($id);
         if (is_null($product)) {
             throw $this->createNotFoundException("Le produit $id n'existe pas !");
         }
 
+        // if quantity is null, send an alert to user
         if ($product->getQuantity() <= 0) {
             $this->addFlash("alert", "Désolé, le produit n'est malheureusement plus en stock");
             return $this->redirectToRoute('products');
         }
 
+        // else user can add it and receives an alert
         $this->cartService->add($id);
         $this->addFlash("warning", "Le produit a bien été ajouté à votre panier.");
 
+        // depends on the query string, user is redirected to the previous route
         if ($request->query->get('returnToCart')) {
             return $this->redirectToRoute("cart_show");
         };
@@ -54,6 +63,9 @@ class CartController extends AbstractController
     }
 
     /**
+     * Uses getTotal() from CartService to get total of all products
+     * and getDetailedCartitems() to get the detail product to product
+     * It also returns the form to do a purchase from the cart
      * @Route("/cart", name="cart_show")
      */
     public function show(): Response
@@ -69,6 +81,7 @@ class CartController extends AbstractController
     }
 
     /**
+     * Uses remove() method from CartService and sends an alert to User
      * @Route("/cart/delete/{id}", name="cart_delete", requirements={"id"="\d+"})
      */
     public function delete(int $id): Response
@@ -84,6 +97,8 @@ class CartController extends AbstractController
     }
 
     /**
+     * Uses decrement() method from CartService to decrease quantity or remove the product
+     * and sends an alert to User.
      * @Route("/cart/decrement/{id}", name="cart_decrement", requirements={"id"="\d+"})
      */
     public function decrement(int $id): Response

@@ -15,11 +15,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
+ * CRUD products for Admin (returns all products, returns one by its id,
+ * deletes one product, and updates ones)
  * @Route("/admin/product")
  */
 class ProductController extends AbstractController
 {
     /**
+     * Returns all products
      * @Route("/", name="product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
@@ -30,6 +33,8 @@ class ProductController extends AbstractController
     }
 
     /**
+     * Handles ProductType form to add a new product
+     * Returns the form and a product
      * @Route("/new", name="product_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -73,6 +78,7 @@ class ProductController extends AbstractController
     }
 
     /**
+     * Returns one product with Param Converter
      * @Route("/{id}", name="product_show", requirements={"id"="\d+"}, methods={"GET"})
      */
     public function show(Product $product): Response
@@ -83,6 +89,7 @@ class ProductController extends AbstractController
     }
 
     /**
+     * Returns a product and the form to update it
      * @Route("/{id}/edit", name="product_edit", requirements={"id"="\d+"}, methods={"GET", "POST"})
      */
     public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
@@ -123,6 +130,7 @@ class ProductController extends AbstractController
     }
 
     /**
+     * Deletes product and redirects admin to products list
      * @Route("/{id}", name="product_delete", requirements={"id"="\d+"}, methods={"POST"})
      */
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response

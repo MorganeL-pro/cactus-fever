@@ -9,6 +9,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+/**
+ * ProductsController handles routes for e-shop.
+ * It has 3 methods : index() to return all products,
+ * show() to return one product by its id
+ * and showCategory() that returns products depending on their category
+ */
 class ProductsController extends AbstractController
 {
     private ProductRepository $productRepository;
@@ -21,6 +27,7 @@ class ProductsController extends AbstractController
     }
 
     /**
+     * Returns all the products and their categories (for the category menu)
      * @Route("/products", name="products")
      */
     public function index(): Response
@@ -34,6 +41,7 @@ class ProductsController extends AbstractController
     }
 
     /**
+     * Returns one product by its id
      * @Route("/products/{id}", requirements={"id"="\d+"}, methods={"GET"}, name="products_show")
      */
     public function show(int $id): Response
@@ -45,6 +53,9 @@ class ProductsController extends AbstractController
     }
 
     /**
+     * Gets products by their category.
+     * Return the selected category, all the categories for menu,
+     * and the products from the category
      * @Route("/products/category/{id}", name="products_category_show", methods={"GET"})
      */
     public function showCategory(Category $category): Response

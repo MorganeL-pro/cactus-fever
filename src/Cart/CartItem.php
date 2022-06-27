@@ -5,6 +5,11 @@ namespace App\Cart;
 use App\Entity\Product;
 use Exception;
 
+/**
+* A cart item is part of Cart Service that takes a product and the quantity
+* added to the cart and returns the total with getTotal() method.
+*/
+
 class CartItem
 {
     public $product;
