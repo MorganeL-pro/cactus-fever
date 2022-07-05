@@ -50,7 +50,7 @@ class ProductController extends AbstractController
             $picture = $form->get('picture')->getData();
 
             $newFilename = 'product' . '-' . uniqid() . '.' . $picture->guessExtension();
-            // Move the file to the directory where brochures are stored
+            // Move the file to the directory where pictures are stored
             if (is_string($this->getParameter('pictures_directory'))) {
                 try {
                     $picture->move(
@@ -103,7 +103,7 @@ class ProductController extends AbstractController
                 $picture = $form->get('picture')->getData();
 
                 $newFilename = 'product' . '-' . uniqid() . '.' . $picture->guessExtension();
-                // Move the file to the directory where brochures are stored
+                // Move the file to the directory where pictures are stored
                 if (is_string($this->getParameter('pictures_directory'))) {
                     try {
                         $picture->move(
